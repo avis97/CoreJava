@@ -1,5 +1,7 @@
 package Stream;
 import java.util.*;
+import java.util.stream.Collectors;
+
 class Student{
     private String name;
     private String stream;
@@ -87,6 +89,22 @@ public class ObjectStream{
                 .map(student ->student.getAdd())
                 .distinct()
                 .forEach(e-> System.out.println(e));
+
+        // count
+        int student= (int) list.stream().count();
+        System.out.println(student);
+
+        // collection-->>
+        List<String> studentList=list
+                .stream()
+                .filter(st->st.getAge()>=25)
+                .sorted(Comparator
+                        .comparing(Student::getAge)
+                        .reversed())
+                .map(Student::getName)
+                .collect(Collectors.toList());
+        
+        studentList.forEach(System.out::println);
 
     }
 }
