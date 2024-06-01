@@ -86,7 +86,7 @@ public class ObjectStream{
         //get a list all the address but no duplicate...
 
         list.stream()
-                .map(student ->student.getAdd())
+                .map(student ->student.getAge())
                 .distinct()
                 .forEach(e-> System.out.println(e));
 
@@ -105,7 +105,14 @@ public class ObjectStream{
                 .collect(Collectors.toList());
         
         studentList.forEach(System.out::println);
-        System.out.println("Ok Learn about github");
+
+        // try to find out max age student
+
+       String name =list.stream()
+               .max(Comparator
+                       .comparing(Student::getAge))//:: this is Method reference..
+               .get().getName();
+        System.out.println(name);  // similarly we can get the min value also...
 
     }
 }
