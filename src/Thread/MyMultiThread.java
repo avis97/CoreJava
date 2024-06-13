@@ -24,8 +24,10 @@ public class MyMultiThread implements Runnable{
         }
     }
     public static void main(String[] args){
+        //1st approch
         MyMultiThread thread=new MyMultiThread();
         Thread thread1=new Thread(thread);
+        //2nd
         AnotherMultiThread thread2=new AnotherMultiThread();
         thread1.start();
         thread2.start();

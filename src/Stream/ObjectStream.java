@@ -108,11 +108,20 @@ public class ObjectStream{
 
         // try to find out max age student
 
-       String name =list.stream()
+       String maxAgeName =list.stream()
                .max(Comparator
                        .comparing(Student::getAge))//:: this is Method reference..
-               .get().getName();
-        System.out.println(name);  // similarly we can get the min value also...
+               .get()
+               .getName();
+
+       System.out.println(maxAgeName);  // similarly we can get the min value also...
+
+        String minAgeName=list.stream()
+                .min(Comparator.comparing(Student::getAge))
+                .get()
+                .getName();
+        System.out.println(minAgeName);
+
 
     }
 }
